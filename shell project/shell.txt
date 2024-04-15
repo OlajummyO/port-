@@ -1,0 +1,24 @@
+gcc -Wall -Wextra -Werror -pedantic main.c -o shellproject
+
+
+#include "main.h"
+
+int main(int ac, char **argv){
+    char *prompt = "(shellproject) $ ";
+    char *lineptrs;
+    size_t n = 0;
+    ssize_t nchars_read;
+
+    /* declarig void variable*/
+    (void)ac; (void)argv;
+
+    /* create an infinte loop*/
+    while (1){
+    printf("%s", prompt);
+    nchars_read = getline(&lineptr, &n, stdin);
+    /* check if t getline function failed or reached EOF OR USER USE CTRL +D */
+
+    if (nchars_read == -1) {
+            printf("Existing shell ....\n");
+            return (-1);
+    }
